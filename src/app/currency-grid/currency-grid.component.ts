@@ -22,6 +22,21 @@ export class CurrencyGridComponent implements OnInit {
     symbol: 'BTC',
     price: 9283.92,
     percent_change_24h: 0.518894
+  }, {
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    price: 9283.92,
+    percent_change_24h: 0.518894
+  }, {
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    price: 9283.92,
+    percent_change_24h: 0.518894
+  }, {
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    price: 9283.92,
+    percent_change_24h: 0.518894
   }];
 
   constructor() { }

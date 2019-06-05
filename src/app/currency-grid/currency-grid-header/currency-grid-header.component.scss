@@ -1,3 +1,35 @@
-th {
-    border: 1px solid black;
+tr {
+    background-color: #d3d3d3;
+
+    th {
+        border: 1px solid black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 0;
+
+        &.currency-grid-header-name {
+            width: 10%;
+        }
+
+        &.currency-grid-header-shortName {
+            width: 10%;
+        }
+
+        &.currency-grid-header-dollarValueOfSingleUnit {
+            width: 10%;
+        }
+
+        &.currency-grid-header-last_24h {
+            width: 10%;
+        }
+
+        &.currency-grid-header-amountYouOwn {
+            width: 40%;
+        }
+
+        &.currency-grid-header-valueOfYourCoin {
+            width: 10%;
+        }
+    }
 }

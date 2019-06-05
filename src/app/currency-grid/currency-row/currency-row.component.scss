@@ -1,6 +1,43 @@
+tr {
+    &.even-row {
+        background-color: #d3d3d3;
+    }
+}
+
 td {
     text-align: center;
     padding: 10px 0 10px 0;
     border: 1px solid black;
     vertical-align: middle;
+    max-width: 0;
+
+    &.ellipsis-display {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &.currency-name {
+        width: 10%;
+    }
+
+    &.currency-symbol {
+        width: 10%;
+    }
+
+    &.currency-price {
+        width: 10%;
+    }
+
+    &.currency-percent_change_24h {
+        width: 10%;
+    }
+
+    &.currency-ammountYouOwn {
+        width: 40%;
+    }
+
+    &.currency-valueOfYourCoin {
+        width: 10%;
+    }
 }

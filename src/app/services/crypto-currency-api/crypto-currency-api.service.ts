@@ -1,7 +1,9 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class CryptoCurrencyApiService {
 
     private cryptoApiUrl: string = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest';

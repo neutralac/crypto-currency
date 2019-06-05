@@ -1,8 +1,26 @@
 <tr>
-  <th>{{'currency-grid-header.name' | translate}}</th>
-  <th>{{'currency-grid-header.shortName' | translate}}</th>
-  <th>{{'currency-grid-header.dollarValueOfSingleUnit' | translate}}</th>
-  <th>{{'currency-grid-header.last_24h' | translate}}</th>
-  <th>{{'currency-grid-header.amountYouOwn' | translate}}</th>
-  <th>{{'currency-grid-header.valueOfYourCoin' | translate}}</th>
+  <th class="currency-grid-header-name">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.name']}}">
+    </app-span-with-tooltip>
+  </th>
+  <th class="currency-grid-header-shortName">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.shortName']}}">
+    </app-span-with-tooltip>
+  </th>
+  <th class="currency-grid-header-dollarValueOfSingleUnit">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.dollarValueOfSingleUnit']}}">
+    </app-span-with-tooltip>
+  </th>
+  <th class="currency-grid-header-last_24h">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.last_24h']}}">
+    </app-span-with-tooltip>
+  </th>
+  <th class="currency-grid-header-amountYouOwn">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.amountYouOwn']}}">
+    </app-span-with-tooltip>
+  </th>
+  <th class="currency-grid-header-valueOfYourCoin">
+    <app-span-with-tooltip text="{{translations['currency-grid-header.valueOfYourCoin']}}" placement="left">
+    </app-span-with-tooltip>
+  </th>
 </tr>

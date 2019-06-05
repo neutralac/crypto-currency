@@ -1,11 +1,26 @@
-<tr>
-  <td>{{data.name}}</td>
-  <td>{{data.symbol}}</td>
-  <td>{{data.price}}</td>
-  <td>{{data.percent_change_24h}}</td>
-  <td>
-    <app-currency-input></app-currency-input>
+<tr [ngClass]="{'even-row': even}">
+  <td class="currency-name ellipsis-display">
+    <app-span-with-tooltip text="{{data.name}}">
+    </app-span-with-tooltip>
   </td>
-  <td>{{data.percent_change_24h}}</td>
-  <td>{{data.percent_change_24h}}</td>
+  <td class="currency-symbol ellipsis-display">
+    <app-span-with-tooltip text="{{data.symbol}}">
+    </app-span-with-tooltip>
+  </td>
+  <td class="currency-price ellipsis-display">
+    <app-span-with-tooltip text="{{data.price | cryptoCurrencyPipe}}">
+    </app-span-with-tooltip>
+  </td>
+  <td class="currency-percent_change_24h ellipsis-display">
+    <app-span-with-tooltip text="{{data.percent_change_24h}}">
+    </app-span-with-tooltip>
+  </td>
+  <td class="currency-ammountYouOwn">
+    <app-currency-input [currencyShortCode]="data.symbol" (ammountOwnedChanged)="onAmmountOwnedChanged()">
+    </app-currency-input>
+  </td>
+  <td class="currency-valueOfYourCoin ellipsis-display">
+    <app-span-with-tooltip text="{{data.valueOfYourCoin | cryptoCurrencyPipe}}" placement="left">
+    </app-span-with-tooltip>
+  </td>
 </tr>

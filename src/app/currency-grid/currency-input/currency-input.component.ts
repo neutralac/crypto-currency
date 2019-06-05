@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-currency-input',
@@ -6,6 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./currency-input.component.scss']
 })
 export class CurrencyInputComponent {
+
+  @Output() ammountOwnedChanged: EventEmitter<void> = new EventEmitter();
 
   /**
    * Crypto currency short code 
@@ -25,7 +27,7 @@ export class CurrencyInputComponent {
    */
   public submitAmmount(): void {
     localStorage.setItem(`${this.currencyShortCode}`, this.amountYouOwn.toString());
-    // TODO trigger update
+    this.ammountOwnedChanged.emit();
   }
 
   /**
