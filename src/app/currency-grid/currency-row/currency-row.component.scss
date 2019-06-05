@@ -1,5 +1,5 @@
 tr {
-    &.even-row {
+    &:not(.even-row) {
         background-color: #d3d3d3;
     }
 
@@ -38,6 +38,19 @@ tr {
 
         &.currency-percent_change_24h {
             width: 10%;
+            font-weight: bold;
+
+            &.price-went-down {
+                span {
+                    color: #ff0000;
+                }
+            }
+
+            &.price-went-up {
+                span {
+                    color: #006400;
+                }
+            }
         }
 
         &.currency-ammountYouOwn {

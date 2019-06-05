@@ -11,9 +11,11 @@
     <app-span-with-tooltip text="{{data.price | currency:'USD':'symbol'}}">
     </app-span-with-tooltip>
   </td>
-  <td class="currency-percent_change_24h ellipsis-display">
-    <app-span-with-tooltip text="{{data.percent_change_24h}}">
-    </app-span-with-tooltip>
+  <td class="currency-percent_change_24h ellipsis-display" [ngClass]="{'
+    price-went-up':data.priceWentUp==true, 'price-went-down' : data.priceWentUp==false}">
+    <span tooltip="{{data.percent_change_24h}}" placement="right" show-delay="100" hide-delay="0">
+      {{data.percent_change_24h}}
+    </span>
   </td>
   <td class="currency-ammountYouOwn">
     <app-currency-input [currencyShortCode]="data.symbol" (ammountOwnedChanged)="onAmmountOwnedChanged()">

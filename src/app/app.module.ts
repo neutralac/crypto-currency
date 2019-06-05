@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -24,8 +25,6 @@ import { CryptoCurrencyApiHttpInterceptor } from './services/http-interceptor/ht
 import { CryptoCurrencyApiService } from './services/crypto-currency-api/crypto-currency-api.service';
 import { LoadingMaskService } from './services/loading-mask/loading-mask.service';
 
-import { CryptoCurrencyPipe } from './pipes/crypto-currency/crypto-currency.pipe';
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
 }
@@ -39,7 +38,6 @@ export function createTranslateLoader(http: HttpClient) {
     CurrencyDetailsPage,
     CurrencyGridHeaderComponent,
     CurrencyInputComponent,
-    CryptoCurrencyPipe,
     PageNotFound,
     SpanWithTooltip
   ],
@@ -55,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     TooltipModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    FormsModule
   ],
   providers: [
     CryptoCurrencyApiService,

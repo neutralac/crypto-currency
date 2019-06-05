@@ -1,4 +1,5 @@
-<input type="number" [value]="amountYouOwn" (input)="onUserInput($event)" (keyup.enter)="submitAmmount()">
-<button (click)="submitAmmount()" [disabled]="!amountYouOwn">
+<input type="text" pattern="^[0-9]*$" title="{{'currency-input-component.onlyNumbersAllowed' | translate}}"
+  [(ngModel)]="amountYouOwn" (input)="onUserInput($event)" (keyup.enter)="submitAmmount()">
+<button (click)="submitAmmount()" [disabled]="!isValid">
   {{'currency-input.submit' | translate}}
 </button>

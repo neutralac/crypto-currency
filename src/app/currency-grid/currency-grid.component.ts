@@ -5,6 +5,8 @@
  * @author Milan Vidojevic
  */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { LoadingMaskService } from '../services/loading-mask/loading-mask.service';
 
 @Component({
@@ -20,35 +22,83 @@ export class CurrencyGridComponent implements OnInit {
    */
   public tableData: any[] = [];
 
-  constructor(private loadingMaskService: LoadingMaskService) { }
+  constructor(private loadingMaskService: LoadingMaskService,
+    private router: Router) { }
 
-  ngOnInit() {
-    this.loadingMaskService.showLoadingMask();
-    let me = this;
-    setTimeout(function () {
-      me.tableData = [{
-        name: 'Bitcoin',
-        symbol: 'BTC',
-        price: 9283.92,
-        percent_change_24h: 0.518894
-      }, {
-        name: 'Bitcoin',
-        symbol: 'BTC',
-        price: 9283.92,
-        percent_change_24h: 0.518894
-      }, {
-        name: 'Bitcoin',
-        symbol: 'BTC',
-        price: 9283.92,
-        percent_change_24h: 0.518894
-      }, {
-        name: 'Bitcoin',
-        symbol: 'BTC',
-        price: 9283.92,
-        percent_change_24h: 0.518894
-      }];
-      me.loadingMaskService.hideLoadingMask();
-    }, 1000);
+  public ngOnInit(): void {
+    this.getData();
   }
 
+  private getData(): void {
+    if (this.router.url == '/') {
+      this.loadingMaskService.showLoadingMask();
+      setTimeout(this.updateData.bind(this), 1000);
+    }
+  }
+
+  public updateData() {
+    this.tableData = [{
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }, {
+      name: 'Bitcoin',
+      symbol: 'BTC',
+      price: 9283.92,
+      percent_change_24h: 0.518894
+    }];
+    this.loadingMaskService.hideLoadingMask();
+    setTimeout(this.getData.bind(this), 60000);
+  }
 }

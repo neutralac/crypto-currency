@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import data from 'src/app/ENV';
 
 @Component({
   selector: 'app-currency-row',
@@ -20,6 +21,14 @@ export class CurrencyRowComponent implements OnInit {
 
   public ngOnInit(): void {
     this.onAmmountOwnedChanged();
+    let percent_change_24h = this.data.percent_change_24h;
+    if (percent_change_24h > 0) {
+      this.data.priceWentUp = true;
+    } else if (percent_change_24h < 0) {
+      this.data.percent_change_24h = 0 - percent_change_24h;
+      this.data.priceWentUp = false;
+    }
+    this.data.percent_change_24h = `${this.data.percent_change_24h.toFixed(2)}%`;
   }
 
   public displayCurrencyDetailsPage() {

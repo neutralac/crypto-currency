@@ -10,5 +10,11 @@
     },
     "currency-input": {
         "submit": "Submit"
+    },
+    "currency-details-page": {
+        "website": "Website:"
+    },
+    "currency-input-component": {
+        "onlyNumbersAllowed": "Only numbers are allowed"
     }
 }

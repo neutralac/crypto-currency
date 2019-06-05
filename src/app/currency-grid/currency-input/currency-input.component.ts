@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-currency-input',
   templateUrl: './currency-input.component.html',
   styleUrls: ['./currency-input.component.scss']
 })
-export class CurrencyInputComponent {
+export class CurrencyInputComponent implements OnInit {
 
   @Output() ammountOwnedChanged: EventEmitter<void> = new EventEmitter();
 
@@ -13,7 +13,7 @@ export class CurrencyInputComponent {
    * Crypto currency short code 
    * Used for storing user coin ammount in localStorage
    */
-  @Input() currencyShortCode: number;
+  @Input() currencyShortCode: string;
 
   /**
    * Input field value
@@ -22,11 +22,21 @@ export class CurrencyInputComponent {
    */
   @Input() public amountYouOwn: number;
 
+  public isValid: boolean = false;
+
+  public ngOnInit(): void {
+    let previousValue = localStorage.getItem(this.currencyShortCode);
+    if (previousValue) {
+      this.amountYouOwn = parseInt(previousValue);
+      this.isValid = true;
+    }
+  }
+
   /**
    * Saves entered ammount to localStorage and triggers total coin value calculation
    */
   public submitAmmount(): void {
-    localStorage.setItem(`${this.currencyShortCode}`, this.amountYouOwn.toString());
+    localStorage.setItem(this.currencyShortCode, this.amountYouOwn.toString());
     this.ammountOwnedChanged.emit();
   }
 
@@ -37,10 +47,11 @@ export class CurrencyInputComponent {
    */
   public onUserInput(event: any): void {
     let value = event.target.value;
-    let amountYouOwn = null;
-    if (value) {
-      amountYouOwn = parseInt(event.target.value);
+    let regex = /^[0-9]*$/;
+    let isValid = false;
+    if (value && regex.test(value)) {
+      isValid = true;
     }
-    this.amountYouOwn = amountYouOwn;
+    this.isValid = isValid;
   }
 }
