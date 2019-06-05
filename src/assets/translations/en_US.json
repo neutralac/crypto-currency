@@ -1,0 +1,14 @@
+{
+    "activeCurrency": "$",
+    "currency-grid-header": {
+        "amountYouOwn": "Amount you own",
+        "name": "Name",
+        "shortName": "Short name",
+        "dollarValueOfSingleUnit": "$ Value",
+        "last_24h": "Last 24h",
+        "valueOfYourCoin": "$ value of your coin"
+    },
+    "currency-input": {
+        "submit": "Submit"
+    }
+}

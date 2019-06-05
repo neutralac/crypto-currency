@@ -17,11 +17,18 @@ export class CurrencyGridComponent implements OnInit {
    * Table display data
    * Updated by callijng crypto currency API on component init
    */
-  public tableData: any[] = [];
+  public tableData: any[] = [{
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    price: 9283.92,
+    percent_change_24h: 0.518894
+  }];
 
   constructor() { }
 
   ngOnInit() {
+
+    // TODO map data to avoid deep interpolation
   }
 
 }

@@ -1,0 +1,25 @@
+    app-currency-grid-header {
+        display: table;
+        width: 100%;
+        border: 1;
+
+        .currency-grid-header {
+            text-align: left;
+            width: 25%;
+        }
+    }
+
+    app-currency-row {
+        display: table;
+        width: 100%;
+
+        :tr {
+            width: 100%;
+            display: block;
+
+            :td {
+                border: 1px solid red;
+                width: 25%;
+            }
+        }
+    }

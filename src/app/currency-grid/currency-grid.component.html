@@ -1,3 +1,2 @@
-<table>
-  <app-currency-row [data]=""></app-currency-row>
-</table>
+<app-currency-grid-header></app-currency-grid-header>
+<app-currency-row *ngFor="let data of tableData" [data]="data"></app-currency-row>

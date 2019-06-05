@@ -1,0 +1,4 @@
+<input type="number" [value]="amountYouOwn" (input)="onUserInput($event)">
+<button (click)="submitAmmount()" [disabled]="!amountYouOwn">
+  {{'currency-input.submit' | translate}}
+</button>
