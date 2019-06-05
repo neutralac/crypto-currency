@@ -17,6 +17,10 @@ export class CurrencyRowComponent implements OnInit {
     this.onAmmountOwnedChanged();
   }
 
+  public displayCurrencyDetailsPage() {
+      
+  }
+
   public onAmmountOwnedChanged(): void {
     let ammount = localStorage.getItem(this.data.symbol);
     let newData = Object.assign({}, this.data);

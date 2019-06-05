@@ -19,6 +19,13 @@ tr {
 
         &.currency-name {
             width: 10%;
+            color: #0000ff;
+            text-decoration: underline;
+            text-decoration-color: #0000ff;
+
+            :hover {
+                cursor: pointer;
+            }
         }
 
         &.currency-symbol {

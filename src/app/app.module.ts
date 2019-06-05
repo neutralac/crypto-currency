@@ -10,10 +10,12 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CurrencyRowComponent } from './currency-grid/currency-row/currency-row.component';
+import { CurrencyDetailsPage } from './currency-details-page/currency-details-page.component';
 import { CurrencyGridComponent } from './currency-grid/currency-grid.component';
 import { CurrencyGridHeaderComponent } from './currency-grid/currency-grid-header/currency-grid-header.component';
 import { CurrencyInputComponent } from './currency-grid/currency-input/currency-input.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { PageNotFound } from './page-not-found/page-not-found.component';
 import { SpanWithTooltip } from './global/span-with-tooltip/span-with-tooltip.component';
 
 import { CryptoCurrencyApiHttpInterceptor } from './services/http-interceptor/http-interceptor.service';
@@ -31,9 +33,11 @@ export function createTranslateLoader(http: HttpClient) {
     CurrencyRowComponent,
     CurrencyGridComponent,
     LoadingIndicatorComponent,
+    CurrencyDetailsPage,
     CurrencyGridHeaderComponent,
     CurrencyInputComponent,
     CryptoCurrencyPipe,
+    PageNotFound,
     SpanWithTooltip
   ],
   imports: [

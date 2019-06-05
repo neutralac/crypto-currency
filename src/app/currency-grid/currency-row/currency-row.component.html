@@ -1,6 +1,6 @@
 <tr [ngClass]="{'even-row': even, 'last-row': last}">
   <td class="currency-name ellipsis-display">
-    <app-span-with-tooltip text="{{data.name}}">
+    <app-span-with-tooltip text="{{data.name}}" (click)="displayCurrencyDetailsPage()">
     </app-span-with-tooltip>
   </td>
   <td class="currency-symbol ellipsis-display">
