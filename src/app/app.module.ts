@@ -7,6 +7,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { TooltipModule } from 'ng2-tooltip-directive';
 
+import { NgxLoadingModule } from 'ngx-loading';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CurrencyRowComponent } from './currency-grid/currency-row/currency-row.component';
@@ -20,6 +22,7 @@ import { SpanWithTooltip } from './global/span-with-tooltip/span-with-tooltip.co
 
 import { CryptoCurrencyApiHttpInterceptor } from './services/http-interceptor/http-interceptor.service';
 import { CryptoCurrencyApiService } from './services/crypto-currency-api/crypto-currency-api.service';
+import { LoadingMaskService } from './services/loading-mask/loading-mask.service';
 
 import { CryptoCurrencyPipe } from './pipes/crypto-currency/crypto-currency.pipe';
 
@@ -51,10 +54,12 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    TooltipModule
+    TooltipModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     CryptoCurrencyApiService,
+    LoadingMaskService,
     { provide: HTTP_INTERCEPTORS, useClass: CryptoCurrencyApiHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+.currency-details-name-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    .currency-details-name {
+        font-size: 5rem;
+    }
+
+    .logo-wrapper {
+        margin-left: 20px;      
+    }
+
+    .currency-details-logo {
+        width: 64px; 
+        height: 64px;
+    }
+}
+
+.currency-details-description {
+    font-size: 1.5rem;
+}
+
+.currency-details-website-wrapper {
+    display: flex; 
+    flex-direction: row;
+    font-size: 1.5rem;
+}

@@ -5,7 +5,7 @@ import { PageNotFound } from './page-not-found/page-not-found.component';
 import { CurrencyGridComponent } from './currency-grid/currency-grid.component';
 
 const routes: Routes = [{
-  path: 'details',
+  path: 'details/:shortName',
   component: CurrencyDetailsPage
 }, {
   path: '',

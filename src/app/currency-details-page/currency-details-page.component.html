@@ -1,3 +1,16 @@
-<div>
-    Details page
-</div>
+<ng-container *ngIf="data">
+    <div class="currency-details-name-wrapper">
+        <div class="currency-details-name">{{data.name}}</div>
+        <div class="logo-wrapper">
+            <img src="{{data.logo}}" class="currency-details-logo">
+        </div>
+    </div>
+    <div>
+        <div class="currency-details-description">{{data.description}}</div>
+    </div>
+    <hr />
+    <div class="currency-details-website-wrapper">
+        <div>Website:</div>
+        <a href="{{data.website}}">{{data.website}}</a>
+    </div>
+</ng-container>
