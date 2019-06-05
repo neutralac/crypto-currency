@@ -7,12 +7,25 @@ import { Component, Input } from '@angular/core';
 })
 export class CurrencyInputComponent {
 
+  /**
+   * Crypto currency short code 
+   * Used for storing user coin ammount in localStorage
+   */
+  @Input() currencyShortCode: number;
+
+  /**
+   * Input field value
+   * 
+   * @type {number}
+   */
   @Input() public amountYouOwn: number;
 
-  public submitAmmount() {
-    if (this.amountYouOwn) {
-
-    }
+  /**
+   * Saves entered ammount to localStorage and triggers total coin value calculation
+   */
+  public submitAmmount(): void {
+    localStorage.setItem(`${this.currencyShortCode}`, this.amountYouOwn.toString());
+    // TODO trigger update
   }
 
   /**
