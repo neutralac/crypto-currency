@@ -11,6 +11,8 @@ export class CurrencyRowComponent implements OnInit {
 
   @Input() data: any = {};
 
+  @Input() last: boolean;
+
   public ngOnInit(): void {
     this.onAmmountOwnedChanged();
   }

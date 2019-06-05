@@ -1,4 +1,4 @@
-<tr [ngClass]="{'even-row': even}">
+<tr [ngClass]="{'even-row': even, 'last-row': last}">
   <td class="currency-name ellipsis-display">
     <app-span-with-tooltip text="{{data.name}}">
     </app-span-with-tooltip>
@@ -8,7 +8,7 @@
     </app-span-with-tooltip>
   </td>
   <td class="currency-price ellipsis-display">
-    <app-span-with-tooltip text="{{data.price | cryptoCurrencyPipe}}">
+    <app-span-with-tooltip text="{{data.price | currency:'USD':'symbol'}}">
     </app-span-with-tooltip>
   </td>
   <td class="currency-percent_change_24h ellipsis-display">
@@ -20,7 +20,7 @@
     </app-currency-input>
   </td>
   <td class="currency-valueOfYourCoin ellipsis-display">
-    <app-span-with-tooltip text="{{data.valueOfYourCoin | cryptoCurrencyPipe}}" placement="left">
+    <app-span-with-tooltip text="{{data.valueOfYourCoin | currency:'USD':'symbol'}}" placement="left">
     </app-span-with-tooltip>
   </td>
 </tr>

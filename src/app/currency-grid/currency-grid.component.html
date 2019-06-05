@@ -1,2 +1,3 @@
 <app-currency-grid-header></app-currency-grid-header>
-<app-currency-row *ngFor="let data of tableData; even as even" [data]="data" [even]="even"></app-currency-row>
+<app-currency-row *ngFor="let data of tableData; even as even; last as last" [data]="data" [even]="even" [last]="last">
+</app-currency-row>
