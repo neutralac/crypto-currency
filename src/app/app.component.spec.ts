@@ -1,35 +1,60 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateServiceMock } from 'src/test-mocks/angular/translate-service.mock';
+import { LoadingMaskService } from './services/loading-mask/loading-mask.service';
+import { LoadingMaskServiceMock } from 'src/test-mocks/services/loading-mask-service.mock';
 
 describe('AppComponent', () => {
+  let app;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        NgxLoadingModule.forRoot({}),
       ],
       declarations: [
         AppComponent
       ],
+      providers: [{
+        provide: TranslateService, useClass: TranslateServiceMock
+      }, {
+        provide: LoadingMaskService, useClass: LoadingMaskServiceMock
+      }]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  beforeEach(function () {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
+    app = fixture.componentInstance;
+  });
+
+  it('should create the app', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'crypto-currency'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('crypto-currency');
-  });
+  describe(' - Testing functions', function () {
+    describe(' - Testing setLoading', function () {
+      let loading = false;
+      beforeEach(function () {
+        spyOn(app, 'setLoadingValue');
+      });
+      it(' - Function will not throw', function () {
+        expect(function () {
+          app.setLoading(loading);
+        }).not.toThrow();
+      });
+    });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to crypto-currency!');
+    describe(' - Testing setLoadingValue', function () {
+      let loading = false;
+      it(' - Function will not throw', function () {
+        expect(function () {
+          app.setLoadingValue(loading);
+        }).not.toThrow();
+      });
+    });
   });
 });

@@ -72,17 +72,32 @@ export class CurrencyGridComponent implements OnInit {
     let sum = 0;
     let item = this.paginationData.allItems.length;
     let currentItem: any;
-    let userCurrencyCount: number;
     while (item) {
       item--;
       currentItem = this.paginationData.allItems[item];
-      userCurrencyCount = parseInt(localStorage.getItem(currentItem.symbol));
-      if (userCurrencyCount) {
-        sum += (currentItem.price - priceData[currentItem.symbol]) * userCurrencyCount;
-      }
+      sum += this.calculateItemGainLossValue(currentItem, priceData);
     }
 
     return sum;
+  }
+
+  /**
+   * Returns calculated single currency item gain loss value
+   * 
+   * @param {Object} currency New currency data
+   * @param {Object} priceData Object where each key is a currency shortCode and value is previous price
+   * 
+   * @return {number}
+   */
+  private calculateItemGainLossValue(currency: any, priceData: any): number {
+    let gainLossValue = 0;
+    let currencySymbol = currency.symbol;
+    let userCurrencyCount = parseInt(localStorage.getItem(currencySymbol));
+    if (userCurrencyCount) {
+      gainLossValue = (currency.price - priceData[currencySymbol]) * userCurrencyCount;
+    }
+
+    return gainLossValue;
   }
 
   /**
@@ -151,7 +166,7 @@ export class CurrencyGridComponent implements OnInit {
     let currencyData = localStorage.getItem('currencyData')
     let data = currencyData ? JSON.parse(currencyData) : {};
     let item = this.paginationData.allItems.length;
-    let currentItem;
+    let currentItem: any;
     while (item) {
       item--;
       currentItem = this.paginationData.allItems[item];

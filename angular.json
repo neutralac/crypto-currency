@@ -82,6 +82,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "codeCoverageExclude": [
+              "src/test-mocks/**/*"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -118,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "crypto-currency"
 }

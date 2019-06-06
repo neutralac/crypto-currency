@@ -85,7 +85,7 @@ export class PaginationBar implements OnInit {
      */
     private calculatePageCount(): number {
         let pageSize = this.config.pageSize;
-        let itemsCount = this.config.allItems ? this.config.allItems.length : 0;
+        let itemsCount = this.getItemsCount();
         let remainder = itemsCount % pageSize;
         let pageCount = (itemsCount - remainder) / pageSize;
         if (remainder) {
@@ -114,6 +114,17 @@ export class PaginationBar implements OnInit {
     }
 
     /**
+     * Returns all items count or 0 if no item passed
+     * 
+     * @return {number}
+     */
+    private getItemsCount(): number {
+        let itemsCount = this.config.allItems ? this.config.allItems.length : 0;
+
+        return itemsCount;
+    }
+
+    /**
      * If it exists sets default page as initial, otherwise sets first page
      */
     private setInitialPage(): void {
@@ -131,8 +142,8 @@ export class PaginationBar implements OnInit {
             this.activePageIndex = index;
             let items = this.getActivePageItems();
             this.pageChanged.emit(items);
-            this.isLast = this.activePageIndex === (this.pageCount - 1);
-            this.isFirst = this.activePageIndex === 0;
+            this.updateIsLast();
+            this.updateIsFirst();
         }
     }
 
@@ -147,5 +158,19 @@ export class PaginationBar implements OnInit {
             pages.push(item);
         }
         this.pages = pages;
+    }
+
+    /**
+     * Updates the value of isFirst property
+     */
+    private updateIsFirst(): void {
+        this.isFirst = this.activePageIndex === 0;
+    }
+
+    /**
+     * Updates the value of isLast property
+     */
+    private updateIsLast(): void {
+        this.isLast = this.activePageIndex === (this.pageCount - 1);
     }
 }
