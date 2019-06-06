@@ -9,16 +9,35 @@ import data from 'src/app/ENV';
 })
 export class CurrencyRowComponent implements OnInit {
 
-  @Input() even: boolean;
+  /**
+   * Row display data
+   * 
+   * @type {Object}
+   */
+  @Input() public data: any = {};
 
-  @Input() data: any = {};
+  /**
+   * True if rows index is even, false otherwise
+   * 
+   * @type {boolean}
+   */
+  @Input() public even: boolean;
 
-  @Input() last: boolean;
+  /**
+   * True if row is last in grid, false otherwise
+   * 
+   * @type {boolean}
+   */
+  @Input() public last: boolean;
 
   constructor(private router: Router) {
 
   }
 
+  /**
+   * Angular lifecycle hook
+   * Updates ammount owned nad updates data for 24h change
+   */
   public ngOnInit(): void {
     this.onAmmountOwnedChanged();
     let percent_change_24h = this.data.percent_change_24h;
@@ -31,10 +50,16 @@ export class CurrencyRowComponent implements OnInit {
     this.data.percent_change_24h = `${this.data.percent_change_24h.toFixed(2)}%`;
   }
 
-  public displayCurrencyDetailsPage() {
+  /**
+   * Triggers details route
+   */
+  public displayCurrencyDetailsPage(): void {
     this.router.navigateByUrl(`/details/${this.data.symbol}`);
   }
 
+  /**
+   * Calculates ammount owned in dollars and updates display
+   */
   public onAmmountOwnedChanged(): void {
     let ammount = localStorage.getItem(this.data.symbol);
     let newData = Object.assign({}, this.data);

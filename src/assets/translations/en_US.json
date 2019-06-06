@@ -22,5 +22,8 @@
         "last": "Last",
         "next": "Next",
         "previous": "Previous"
+    },
+    "page-not-found": {
+        "text": "Page not found!"
     }
 }

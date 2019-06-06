@@ -1,3 +1,8 @@
+/**
+ * Main component
+ * 
+ * @author Milan Vidojevic
+ */
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingMaskService } from './services/loading-mask/loading-mask.service';
@@ -10,6 +15,11 @@ import { LoadingMaskService } from './services/loading-mask/loading-mask.service
 export class AppComponent {
   title = 'crypto-currency';
 
+  /**
+   * True if loading mask should be visible, false otherwise
+   * 
+   * @type {boolean}
+   */
   public loading: boolean = true;
 
   constructor(private translateService: TranslateService,
@@ -18,10 +28,21 @@ export class AppComponent {
     this.loadingMaskService.loadingMaskToggle.subscribe(this.setLoading.bind(this));
   }
 
+  /**
+   * Sets loading timeout to update loading value
+   * 
+   * @param {boolean} loading 
+   */
   private setLoading(loading: boolean): void {
-    let me = this;
-    setTimeout(function () {
-      me.loading = loading;
-    });
+    setTimeout(this.setLoadingValue.bind(this, loading));
+  }
+
+  /**
+   * Sets loading value
+   * 
+   * @param {boolean} loading 
+   */
+  private setLoadingValue(loading: boolean): void {
+    this.loading = loading;
   }
 }

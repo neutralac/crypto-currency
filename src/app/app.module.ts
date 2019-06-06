@@ -17,7 +17,6 @@ import { CurrencyDetailsPage } from './currency-details-page/currency-details-pa
 import { CurrencyGridComponent } from './currency-grid/currency-grid.component';
 import { CurrencyGridHeaderComponent } from './currency-grid/currency-grid-header/currency-grid-header.component';
 import { CurrencyInputComponent } from './currency-grid/currency-input/currency-input.component';
-import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { PageNotFound } from './page-not-found/page-not-found.component';
 import { PaginationBar } from './global/pagination-bar/pagination-bar.component';
 import { SpanWithTooltip } from './global/span-with-tooltip/span-with-tooltip.component';
@@ -35,7 +34,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     CurrencyRowComponent,
     CurrencyGridComponent,
-    LoadingIndicatorComponent,
     CurrencyDetailsPage,
     CurrencyGridHeaderComponent,
     CurrencyInputComponent,

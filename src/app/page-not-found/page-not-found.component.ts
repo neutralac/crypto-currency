@@ -1,3 +1,8 @@
+/**
+ * Default page to be displayed if route is not matched
+ * 
+ * @author Milan Vidojevic
+ */
 import { Component } from '@angular/core';
 
 @Component({

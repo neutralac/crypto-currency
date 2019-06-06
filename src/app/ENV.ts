@@ -1,3 +1,8 @@
+/**
+ * File containing global app configuration
+ * 
+ * @author Milan Vidojevic
+ */
 let data = {
     cryptoCurrencyApiKey: '78b409e7-483e-442a-a434-893b4c00e83f'
 };

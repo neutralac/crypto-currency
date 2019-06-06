@@ -1,3 +1,8 @@
+/**
+ * Main routing module
+ * 
+ * @author Milan Vidojevic
+ */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CurrencyDetailsPage } from './currency-details-page/currency-details-page.component';

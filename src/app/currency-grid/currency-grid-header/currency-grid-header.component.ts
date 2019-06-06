@@ -1,3 +1,8 @@
+/**
+ * Currency grid header component
+ * 
+ * @author Milan Vidojevic
+ */
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -8,6 +13,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CurrencyGridHeaderComponent {
 
+  /**
+   * Array containing all localization string keys
+   * 
+   * @type {string[]}
+   */
   private localizationStrings: string[] = [
     'currency-grid-header.name',
     'currency-grid-header.shortName',
@@ -17,6 +27,11 @@ export class CurrencyGridHeaderComponent {
     'currency-grid-header.valueOfYourCoin'
   ];
 
+  /**
+   * Object containing translated strings
+   * 
+   * @type {Object}
+   */
   public translations: any = {};
 
   constructor(private translateService: TranslateService) {
@@ -25,8 +40,11 @@ export class CurrencyGridHeaderComponent {
     this.translateService.onLangChange.subscribe(this.onLangChange);
   }
 
-
-  private onLangChange() {
+  /**
+   * Translate service language change listener
+   * Updates translations
+   */
+  private onLangChange(): void {
     this.translations = this.translateService.instant(this.localizationStrings);
   }
 }

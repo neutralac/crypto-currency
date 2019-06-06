@@ -1,3 +1,8 @@
+/**
+ * Currency grid user currency count component
+ * 
+ * @author Milan Vidojevic
+ */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +12,13 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class CurrencyInputComponent implements OnInit {
 
-  @Output() ammountOwnedChanged: EventEmitter<void> = new EventEmitter();
-
   /**
-   * Crypto currency short code 
-   * Used for storing user coin ammount in localStorage
+   * EventEmitter triggered when user submits currency count
+   * Used to trigger view data calculations
+   * 
+   * @type {EventEmitter}
    */
-  @Input() currencyShortCode: string;
+  @Output() ammountOwnedChanged: EventEmitter<void> = new EventEmitter();
 
   /**
    * Input field value
@@ -22,8 +27,26 @@ export class CurrencyInputComponent implements OnInit {
    */
   @Input() public amountYouOwn: number;
 
+  /**
+   * Crypto currency short code 
+   * Used for storing user coin ammount in localStorage
+   * 
+   * @type {string}
+   */
+  @Input() currencyShortCode: string;
+
+  /**
+   * True if valid number has been entered, false otherwise
+   * Used for Submit button validation
+   * 
+   * @type {boolean}
+   */
   public isValid: boolean = false;
 
+  /**
+   * Angular lifecycle hook
+   * Updates ammountYouOwn if it exists, else does nothing
+   */
   public ngOnInit(): void {
     let previousValue = localStorage.getItem(this.currencyShortCode);
     if (previousValue) {
@@ -33,15 +56,7 @@ export class CurrencyInputComponent implements OnInit {
   }
 
   /**
-   * Saves entered ammount to localStorage and triggers total coin value calculation
-   */
-  public submitAmmount(): void {
-    localStorage.setItem(this.currencyShortCode, this.amountYouOwn.toString());
-    this.ammountOwnedChanged.emit();
-  }
-
-  /**
-   * Updates amountYouOwn value to trigger button validation
+   * Updates validation properties for Submit button validation on user input
    * 
    * @param {InputEvent} event Object containing click event data
    */
@@ -53,5 +68,13 @@ export class CurrencyInputComponent implements OnInit {
       isValid = true;
     }
     this.isValid = isValid;
+  }
+
+  /**
+   * Saves entered ammount to localStorage and triggers total coin value calculation
+   */
+  public submitAmmount(): void {
+    localStorage.setItem(this.currencyShortCode, this.amountYouOwn.toString());
+    this.ammountOwnedChanged.emit();
   }
 }
