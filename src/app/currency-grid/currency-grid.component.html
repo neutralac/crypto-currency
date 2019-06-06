@@ -1,6 +1,10 @@
 <ng-container *ngIf="tableData.length">
-    <app-currency-grid-header></app-currency-grid-header>
-    <app-currency-row *ngFor="let data of tableData; even as even; last as last" [data]="data" [even]="even"
-        [last]="last">
-    </app-currency-row>
+    <div class="currency-grid-parent">
+        <app-currency-grid-header></app-currency-grid-header>
+        <div class="currency-grid-rows-parent">
+            <app-currency-row *ngFor="let data of tableData; even as even; last as last" [data]="data" [even]="even"
+                [last]="last">
+            </app-currency-row>
+        </div>
+    </div>
 </ng-container>
