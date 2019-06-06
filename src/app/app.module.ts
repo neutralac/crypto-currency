@@ -19,6 +19,7 @@ import { CurrencyGridHeaderComponent } from './currency-grid/currency-grid-heade
 import { CurrencyInputComponent } from './currency-grid/currency-input/currency-input.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { PageNotFound } from './page-not-found/page-not-found.component';
+import { PaginationBar } from './global/pagination-bar/pagination-bar.component';
 import { SpanWithTooltip } from './global/span-with-tooltip/span-with-tooltip.component';
 
 import { CryptoCurrencyApiHttpInterceptor } from './services/http-interceptor/http-interceptor.service';
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     CurrencyGridHeaderComponent,
     CurrencyInputComponent,
     PageNotFound,
+    PaginationBar,
     SpanWithTooltip
   ],
   imports: [

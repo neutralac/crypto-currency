@@ -1,0 +1,40 @@
+.pagination {
+    margin: 0;
+
+    li {
+        display: inline;
+
+        a, span {
+            cursor: pointer;
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1rem;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    }
+
+    .active {
+        a, a:focus, a:hover, span, span:focus, span:hover {
+            z-index: 3;
+            color: #fff;
+            cursor: pointer;
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+    }
+
+    .disabled {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #fff;
+        border-color: #ddd;
+
+        a {
+            cursor: not-allowed;
+        }
+    }
+}

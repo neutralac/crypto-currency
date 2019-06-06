@@ -1,0 +1,17 @@
+<ul *ngIf="pageCount" class="pagination">
+    <li [ngClass]="{disabled:isFirst}">
+        <a (click)="setPage(0)">{{'pagination-bar.first' | translate}}</a>
+    </li>
+    <li [ngClass]="{disabled:isFirst}">
+        <a (click)="setPage(activePageIndex - 1)">{{'pagination-bar.previous' | translate}}</a>
+    </li>
+    <li *ngFor="let page of pages" [ngClass]="{active:activePageIndex === page-1}">
+        <a (click)="setPage(page-1)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:isLast}">
+        <a (click)="setPage(activePageIndex + 1)">{{'pagination-bar.next' | translate}}</a>
+    </li>
+    <li [ngClass]="{disabled:isLast}">
+        <a (click)="setPage(pageCount-1)">{{'pagination-bar.last' | translate}}</a>
+    </li>
+</ul>

@@ -1,15 +1,22 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { isNumeric } from "rxjs/util/isNumeric";
+import { isNumber } from 'util';
 
 @Component({
     selector: 'app-pagination-bar',
-    templateUrl: './pagination-bar.component.html'
+    templateUrl: './pagination-bar.component.html',
+    styleUrls: ['./pagination-bar.component.scss']
 })
 export class PaginationBar implements OnInit {
 
-    private pageItems: any[] = [];
+    private activePageIndex: number;
 
-    private pageCount: number = 0;
+    public isFirst: boolean = false;
+
+    public isLast: boolean = false;
+
+    public pageCount: number = 0;
+
+    public pages: number[] = [];
 
     @Output() public pageChanged: EventEmitter<any[]> = new EventEmitter();
 
@@ -20,14 +27,15 @@ export class PaginationBar implements OnInit {
 
     public ngOnInit(): void {
         this.pageCount = this.calculatePageCount();
+        this.setPages();
         this.setInitialPage();
     }
 
     private calculatePageCount(): number {
         let pageSize = this.config.pageSize;
         let itemsCount = this.config.allItems ? this.config.allItems.length : 0;
-        let pageCount = itemsCount / pageSize;
         let remainder = itemsCount % pageSize;
+        let pageCount = (itemsCount - remainder) / pageSize;
         if (remainder) {
             pageCount++;
         }
@@ -35,11 +43,41 @@ export class PaginationBar implements OnInit {
         return pageCount;
     }
 
-    private setInitialPage() {
-        let pageIndex = isNumber(this.config.defaultPageIndex) != undefined ?
+    private getActivePageItems(): any[] {
+        let pageSize = this.config.pageSize;
+        let startIndex = this.activePageIndex * pageSize;
+        let endIndex = startIndex + pageSize;
+        let itemsCount = this.config.allItems.length;
+        if (endIndex > itemsCount) {
+            endIndex = itemsCount;
+        }
+        let items = this.config.allItems.slice(startIndex, endIndex);
+
+        return items;
     }
 
-    public setPage(index: number) {
+    private setInitialPage(): void {
+        let pageIndex = isNumber(this.config.defaultPageIndex) ? this.config.defaultPageIndex : 0;
+        this.setPage(pageIndex);
+    }
 
+    public setPage(index: number): void {
+        if (0 <= index && index < this.pageCount) {
+            this.activePageIndex = index;
+            let items = this.getActivePageItems();
+            this.pageChanged.emit(items);
+            this.isLast = this.activePageIndex === (this.pageCount - 1);
+            this.isFirst = this.activePageIndex === 0;
+        }
+    }
+
+    private setPages() {
+        let pages = [];
+        let item = 0;
+        while (item < this.pageCount) {
+            item++;
+            pages.push(item);
+        }
+        this.pages = pages;
     }
 }

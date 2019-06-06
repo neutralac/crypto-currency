@@ -16,7 +16,9 @@ export class CryptoCurrencyApiService {
     }
 
     public getCryptoCurrencyData(): Promise<any> {
-        let observable: Observable<any> = this.http.get(this.urls.quotes);
+        // let observable: Observable<any> = this.http.get(this.urls.quotes);
+        // return observable.toPromise();
+        let observable = this.http.get('assets/data/grid-data.json');
         return observable.toPromise();
     }
 

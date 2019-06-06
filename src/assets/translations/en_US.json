@@ -16,5 +16,11 @@
     },
     "currency-input-component": {
         "onlyNumbersAllowed": "Only numbers are allowed"
+    },
+    "pagination-bar": {
+        "first": "First",
+        "last": "Last",
+        "next": "Next",
+        "previous": "Previous"
     }
 }

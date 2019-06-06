@@ -1,10 +1,20 @@
-<ng-container *ngIf="tableData.length">
+<ng-container *ngIf="paginationData.allItems.length">
     <div class="currency-grid-parent">
         <app-currency-grid-header></app-currency-grid-header>
         <div class="currency-grid-rows-parent">
             <app-currency-row *ngFor="let data of tableData; even as even; last as last" [data]="data" [even]="even"
                 [last]="last">
             </app-currency-row>
+        </div>
+        <div class="currency-grid-bottom-section">
+            <div class="gain-loss-value-parent">
+                Gain/Loss change:
+                <span [ngClass]="{'loss': gainValue < 0, 'gain': gainValue > 0}">
+                    {{gainValue | currency}}
+                </span>
+            </div>
+            <app-pagination-bar *ngIf="paginationData.allItems.length" (pageChanged)="onPageChange($event)"
+                [config]="paginationData"></app-pagination-bar>
         </div>
     </div>
 </ng-container>
